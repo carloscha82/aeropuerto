@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-lj0_p*qrjhc6#mi$chs)86qlv3-#-!r1iovi&234mf-ch0m-9s
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+AUTH_USER_MODEL = 'aeropuerto_app.Usuario'
 ALLOWED_HOSTS = []
 
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aeropuerto_app.apps.AeropuertoAppConfig',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+        'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication'],
+    }
